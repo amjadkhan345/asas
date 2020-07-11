@@ -1,0 +1,60 @@
+{% extends 'layout.html'%}
+{% block page_title %} home page {% endblock %}
+
+{%block content %}
+<ul class="nav justify-content-center navbar-light lg-dark">
+  <li class="nav-item">
+    <a class="nav-link active" href="/deta/">Post</a>
+  </li>
+  <li class="nav-item">
+            <a class="nav-link" href="/view_friend/">Friend List</a>
+  </li>
+  <li class="nav-item">
+            <a class="nav-link" href="/home/">find Friend</a>
+  </li>
+
+</ul>
+
+<div class="hallo">
+	{% for user in users %}
+
+	<div class="row">
+		<div class="col-md-8 offset-md-3">
+			<div class="form_container" style="width: 50rem">
+		<div class="card-body">
+			<nav class="navbar navbar-light bg-light justify-content-between">
+				<a href="{% url 'find_profiles' user.user.profile.id %}">
+			<img class="rounded-circle" src="{{ user.user.profile.image.url }} " style="width: 5rem" alt="Card image cap">
+				{{user.user.first_name}}
+					</a>
+			</nav>
+			{{user.title}}
+
+			<img class="card-img-top" src="{{ user.image.url }} " alt="Card image cap">
+			{{user.totel_like}} Like{{user.totel_like |pluralize }}
+			<nav class="navbar navbar-light bg-light justify-content-between">
+			<a href="{% url 'asas:commint'   user.id  %}" class="btn btn-success">comment</a>
+				<form action="{% url 'asas:like_post' %}" method="post">
+					{% csrf_token %}
+					{% if user in friend %}
+						<button type="submit" value="{{user.id}}" name="post_id">Dislike</button>
+					{% else %}
+						<button type="submit" value="{{user.id}}" class="btn btn-success" name="post_id">like</button>
+					{% endif %}
+				</form>
+				</nav>
+		</div>
+	</div>
+		</div>
+	</div>
+
+</div>
+
+
+{% endfor %}
+
+
+
+
+{% endblock %}
+

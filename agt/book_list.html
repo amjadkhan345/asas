@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {{ message }}
+{% for user in user %}
+<div class="container">
+    <div class="col-md-8">
+        <p>
+        {% if user.image %}
+            <img src="{{user.image.url }}" style="width: 5rem;">
+        {% else %}
+        {% endif%}
+            <a href="{% url 'asas:pages_detal' user.id %}">{{user.name}}</a></p>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

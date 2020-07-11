@@ -1,0 +1,23 @@
+{% extends 'layout.html'%}
+{% block page_title %} home page {% endblock %}
+
+{%block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">submit</button>
+    </form>
+{{user.commint.totel }}Commint{{ totels |pluralize }}
+{% for user in users %}
+ <p><li> <img class="rounded-circle" src="{{ user.user.profile.image.url }} " alt="Card image cap" style="width: 3rem">
+ {{user.commint}}</li>
+     <small>{{user.created}}</small></p>
+{% if not user.is_authenticated %}
+<form method="post" action="{% url 'asas:delete_comment' user.id %}">
+    {% csrf_token %}
+    <button type="submit" value="{{user.id}}">delete</button>
+</form>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

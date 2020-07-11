@@ -1,0 +1,80 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/stayle.css/">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5ea7287991a3b200121cb604&product=inline-share-buttons" async="async"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ea74003680bc2c7"></script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 ">
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a href="{% url 'profile' %}">
+            <img class="rounded-circle" src="{{ user.profile.image.url }} " style="width: 8rem"></a>
+        {% include 'nevebar.html' %}
+        <div class="dropdown">
+            <button  type="submit" id="user.id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <img class="rounded-circle" src="{{user.profile.image.url }} " style="width: 3rem">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <a href="/add_profile/">
+                    <button class="dropdown-item" type="button">Edit profile</button></a>
+                <a href="/accaont/usar_update/">
+                    <button class="dropdown-item" type="button">Edit Accont</button></a>
+                <a href="/share/">
+                    <button class="dropdown-item" type="button"> start Book</button></a>
+                <a href="/book_list/">
+                    <button class="dropdown-item" type="button"> List Book</button></a>
+                 <a href="/book/">
+                    <button class="dropdown-item" type="button">Book</button></a>
+                <a href="/courses/">
+                    <button class="dropdown-item" type="button">Video</button></a>
+                <div class="dropdown mr-sm-0" style="background-color: reed;">
+                    <button class="btn " style="background-color: reed;" type="button" value="user.id" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        sitting
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2" style="background-color: reed;">
+                        <a href="/edit_profile/">
+                            <button class="dropdown-item" type="button">Edit profile</button></a>
+                        <a href="/accaont/usar_update/">
+                            <button class="dropdown-item" type="button">Edit Accont</button></a>
+                    </div>
+                </div>
+                <a href="/logout/">
+                    <button  class="dropdown-item" type="button">log out</button></a>
+            </div>
+        </div>
+            </li>
+         </nav>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-md-8 ">
+
+
+
+
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+</div>
+</body>
+
+
+
+
+
+</html>

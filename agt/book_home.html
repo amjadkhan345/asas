@@ -1,0 +1,15 @@
+{% extends 'layout.html'%}
+{% block page_title %} post page {% endblock %}
+
+{%block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        {% for user in user %}
+        <li><a href="{% url 'asas:page'  user.id %}">
+            <button class="btn btn-sucsess" type="submit" >{{user.name }}</button></a></li>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

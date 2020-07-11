@@ -1,0 +1,22 @@
+{% extends 'layout.html'%}
+{% block page_title %} home page {% endblock %}
+
+{%block content %}
+  <div class="container">
+    <div class="form_row">
+        <div class="form-group col-md-8">
+            <h3> other people</h3>
+
+            {% for user in users %}
+            <a href="{% url 'find_profiles' user.id %}"> <li>{{user.username}}</a>
+            {% if not user  in friends %}
+            <a href="{% url 'asas:change_friend'  operation='add' pk=user.pk  %}">
+            <button type="button" class="btn btn-success">add friend</button>
+            </a></li>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+  </div>
+{% endblock %}

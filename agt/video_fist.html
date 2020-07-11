@@ -1,0 +1,25 @@
+{% extends 'layout.html'%}
+{% block page_title %} home page {% endblock %}
+
+{%block content %}
+{% for user in user %}
+
+        <div class="container">
+            <div class="col-md-8">
+				{{user.name}}
+        <video controls
+					   controlsList="nodownload"
+					   poster="{{ user.thumbnail.url }}"
+				       src="{{ user.video.url }}"
+				       width="600"
+				       height="500px">
+				    Sorry, your browser doesn't support embedded videos.
+				</video>
+            <img class="rounded-circle" src="{{ user.user.profile.image.url }}" style="width: 5rem">
+					<small>{{ user.descreption }}</small>
+            </div>
+        </div>
+		{% endfor%}
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layout.html'%}
+{% block page_title %} home page {% endblock %}
+
+{%block content %}
+		<div class="card" style="width: 18rem;">
+			<hr>
+			<img class="profile-pic" src="{{ user.profile.image.url }} " alt="Card image cap" style="width: 15rem">
+			<div class="card-body">
+				<li>address; {{ user.profile.address }}</li>
+				<li>contry; {{ user.profile.contry }}</li>
+				<li>mobil number; {{ user.profile.mobil }}</li>
+			</div>
+		</div>
+
+{% endblock %}
