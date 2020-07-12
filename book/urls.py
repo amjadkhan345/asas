@@ -35,7 +35,7 @@ urlpatterns = [
     path('accaont/', include('accaont.urls', namespace='accaont')),
     path('profile/', view_profile, name='profile'),
     #url(r'^frofile/{?p<pk>\d+}/$', frofile, name='frofile_with_pk')
-    path('', include('asas.urls', namespace='asas')),
+    path('asas/', include('asas.urls', namespace='asas')),
     path('profile/<str:pk_test>', profile, name='find_profiles'),
     path('add_profile/', add_profile, name='add_profile'),
     path('edit_profile/', edit_profile, name='edit_profile'),
@@ -43,7 +43,7 @@ urlpatterns = [
     path('shopping_cart/', include('memberships.urls', namespace='shopping_cart')),
     #path('courses/', include('courses.urls', namespace='courses')),
     path('video/', include('video.urls', namespace='video')),
-    path('api/', include('api.urls', namespace='api')),
+    path('', include('api.urls', namespace='api')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
