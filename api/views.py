@@ -73,7 +73,7 @@ def payment(request):
         re = requests.post(url1,
 
                         data=create_payment_body)
-        print(re)
+        # print(re)
         pprint(re)
     return render(request, 'index.html')
 
