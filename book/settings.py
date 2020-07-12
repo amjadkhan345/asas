@@ -80,12 +80,8 @@ WSGI_APPLICATION = 'book.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3jgfpsb5i1r04',
-        'USER': 'vqronkkdgeopty',
-        'PASSWORD': 'bc3797ee7ce6968536c657c2966e5f522b10be8bd7d6e64424eec1bd62e41dd3',
-        'HOST': 'ec2-34-239-241-25.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
