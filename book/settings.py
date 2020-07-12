@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(q=(y!!mk7lwp@pm-ry6ywai4fus)9pvy5t2c(ce=c3dck49u5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://pakpay.herokuapp.com/', 'localhost', '127.0.0.1']
 
