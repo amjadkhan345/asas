@@ -70,10 +70,11 @@ def payment(request):
             'complete_payment_url': 'http://127.0.0.1:8000/',
         }
         url1= 'https://sandboxapi.rapyd.net/v1/payments'
-        requests.post(url1,
+        re = requests.post(url1,
 
                         data=create_payment_body)
-        # pprint(response)
+        print(re)
+        pprint(re)
     return render(request, 'index.html')
 
 
