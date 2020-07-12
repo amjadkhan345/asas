@@ -74,7 +74,7 @@ def payment(request):
 
                         data=create_payment_body)
         pprint(response)
-    return render(request, 'indax.html')
+    return render(request, 'index.html')
 
 
 
