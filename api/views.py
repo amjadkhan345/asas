@@ -71,10 +71,11 @@ def payment(request):
         # amount = request.POST['amount']
 
         body1 = {
-            'receipt_email': str(receipt_email),
+            #'receipt_email': str(receipt_email),
             "amount": amount,
-            'payment_method': 'card_fe2e4ae68af029321106c3ac1c0b30de',
+            #'payment_method': 'card_fe2e4ae68af029321106c3ac1c0b30de',
             "currency": "SAR",
+            'country': 'SA',
             'error_payment_url': 'https://pakpay.herokuapp.com/',
             'complete_payment_url': 'https://pakpay.herokuapp.com',
             'show_intermediate_return_page': True,
