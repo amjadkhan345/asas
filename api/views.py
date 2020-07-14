@@ -77,9 +77,10 @@ def payment(request):
             "currency": "SAR",
             'error_payment_url': 'https://pakpay.herokuapp.com/',
             'complete_payment_url': 'https://pakpay.herokuapp.com',
+            'show_intermediate_return_page': True,
         }
         url1 = 'https://sandboxapi.rapyd.net/v1/payments'
-        response = requests.post(url1, data=body1, headers=headers)
+        response = requests.post(url, data=body1, headers=headers)
 
         #               data=create_payment_body)
         pprint(response)
