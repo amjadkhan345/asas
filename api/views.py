@@ -68,6 +68,7 @@ def payment(request):
     if request.method == 'POST':
         amount = request.POST['amount']
         receipt_email = request.POST['receipt_email']
+        user = headers
         # amount = request.POST['amount']
 
         body1 = {
@@ -81,7 +82,7 @@ def payment(request):
             'show_intermediate_return_page': True,
         }
         url1 = 'https://sandboxapi.rapyd.net/v1/payments'
-        response = requests.post(url, body=body1, headers=headers)
+        return requests.post(url, data=body1, headers=user)
 
         #               data=create_payment_body)
         pprint(response)
