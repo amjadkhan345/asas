@@ -82,7 +82,7 @@ def payment(request):
             'show_intermediate_return_page': True,
         }
         url1 = 'https://sandboxapi.rapyd.net/v1/payments'
-        return requests.post(url, data=body1, headers=user)
+        response= requests.request('POST', url, data=body1, headers=user)
 
         #               data=create_payment_body)
         pprint(response)
