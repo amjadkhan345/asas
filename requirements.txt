@@ -1,5 +1,5 @@
 abook==0.5.4
-# abot==0.0.1a1.post0.dev32
+abot==0.0.1a1.post0.dev32
 admin==0.0.1
 aiohttp==3.6.2
 amas==0.98
@@ -43,7 +43,7 @@ order==1.2.0
 path==14.0.1
 pbr==5.4.5
 Pillow==7.0.0
-#post==2019.4.13
+post==2019.4.13
 psycopg2==2.8.5
 pycoin==0.90.20200322
 Pygments==2.1
