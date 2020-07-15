@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from pprint import pprint
+# from pprint import pprint
+
+from utilities import make_request
 
 # from utilities import make_request
 import hashlib
@@ -92,3 +95,24 @@ def payment(request):
     return render(request, 'bail.html')
 
 # Create your views here.
+def makepayment(request):
+    create_payment_body = {
+           "amount": 100,
+           "currency": "USD",
+            "description": "Payment by card token",
+            "payment_method": "card_fe2e4ae68af029321106c3ac1c0b30de",
+            "metadata": {
+                "merchant_defined": True
+            }
+        }
+        response = make_request(method='post',
+                                path='/v1/payments',
+                                headers=headers,
+                                body=create_payment_body)
+        pprint(response)
+    
+
+
+
+
+
