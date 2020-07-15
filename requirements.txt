@@ -1,5 +1,5 @@
 abook==0.5.4
-abot==0.0.1a1.post0.dev32
+# abot==0.0.1a1.post0.dev32
 admin==0.0.1
 aiohttp==3.6.2
 amas==0.98
