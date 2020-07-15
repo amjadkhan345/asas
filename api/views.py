@@ -1,8 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from pprint import pprint
-# from pprint import pprint
-
-from utilities import make_request
 
 # from utilities import make_request
 import hashlib
@@ -14,6 +11,9 @@ import calendar
 import string
 from random import *
 import hmac
+from .rapyd22 import make_request
+
+from django.urls import reverse
 
 idempotency_key = 'aee984befae64'  # Unique for each 'Create Payment' request.
 
@@ -21,6 +21,7 @@ http_method = 'post'  # Lower case.
 base_url = 'https://sandboxapi.rapyd.net'
 # path = '/v1/data/countries'  # Portion after the base URL.
 path = '/v1/payments'
+# path = '/v1/checkout'
 # salt: randomly generated for each request.
 min_char = 8
 max_char = 12
@@ -54,65 +55,86 @@ headers = {
     'idempotency': idempotency_key
 }
 
-
 # body = {
 #   'amount': 100,
 # }
-# print(url)
+print(url)
 
-# r = requests.post(url, data={"amount": 99,
-#                           },
-#                headers=headers)
-# print(r.text)
+r = requests.post(url, data={'receipt_email': 'amjadsh345@gmail.com',  # str(receipt_email),
+                             "amount": 99,
+                             'payment_method': 'card_fe2e4ae68af029321106c3ac1c0b30de',
+                             "currency": "SAR",
+                             'show_intermediate_return_page': True,
+                             'error_payment_url': 'https://pakpay.herokuapp.com/',
+                             'complete_payment_url': 'https://pakpay.herokuapp.com',
+                             },
+                  headers=headers)
+print(r.text)
+
+
 # print(headers)
 
 def payment(request):
-    # user =headers
+    # users =headers
     if request.method == 'POST':
         amount = request.POST['amount']
         receipt_email = request.POST['receipt_email']
-        user = headers
+        users = headers
         # amount = request.POST['amount']
 
-        body1 = {
-            #'receipt_email': str(receipt_email),
+        create_payment_body = {
+            'receipt_email': str(receipt_email),
             "amount": amount,
-            #'payment_method': 'card_fe2e4ae68af029321106c3ac1c0b30de',
+            'payment_method': 'card_fe2e4ae68af029321106c3ac1c0b30de',
             "currency": "SAR",
             'country': 'SA',
+            "payment_method_type": "sg_grabpay_ewallet",
+
+            'show_intermediate_return_page': True,
             'error_payment_url': 'https://pakpay.herokuapp.com/',
             'complete_payment_url': 'https://pakpay.herokuapp.com',
-            'show_intermediate_return_page': True,
         }
+        
         url1 = 'https://sandboxapi.rapyd.net/v1/payments'
-        response= requests.request('POST', url, data=body1, headers=user)
+        # response = requests.post(url, data=body1, headers=headers)
 
         #               data=create_payment_body)
-        pprint(response)
+        # pprint(response)
+        
+        response = make_request(method='post',
+                                path='/v1/payments',
 
-    # return render(request, 'rapydsub.html', {'user': user, 'body': body})
+                                body=create_payment_body)
+        print(response)
+
+        # return render(request, 'rapydsub.html', {'users': users, 'body': body1})
+        # from django.urls import reverse
+        #re = requests.post(url, headers=users, data=body1)
+        #print(re)
 
     return render(request, 'bail.html')
 
-# Create your views here.
-def makepayment(request):
+
+def index(request, user, body2):
+    users = user
+    body1 = body2
+
+
     create_payment_body = {
-           "amount": 100,
-           "currency": "USD",
+            "amount": 100,
+            "currency": "USD",
             "description": "Payment by card token",
             "payment_method": "card_fe2e4ae68af029321106c3ac1c0b30de",
             "metadata": {
                 "merchant_defined": True
             }
         }
-        response = make_request(method='post',
+    response = make_request(method='post',
                                 path='/v1/payments',
-                                headers=headers,
+
                                 body=create_payment_body)
-        pprint(response)
-    
+    pprint(response)
 
+    return render(request, 'rapydsub.html', {'users': users, 'body': body1})
 
-
-
-
+# Create your views here.
